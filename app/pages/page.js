@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { Header } from '../(components)/layout/Header';
 import HeroSection from '../(components)/home/sections/HeroSection';
 import ScrollingMarquee from '../(components)/home/sections/ScrollingMarquee';
