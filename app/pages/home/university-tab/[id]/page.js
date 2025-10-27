@@ -1,5 +1,5 @@
 'use client';
-
+export const runtime = 'edge';
 import ProgramsList from '@/app/(components)/home/sections/UniversitiesLayout/ProgramsList';
 import Button from '@/app/(components)/ui/Button';
 import BacklogsIcon from '@/public/home/BacklogsIcon';

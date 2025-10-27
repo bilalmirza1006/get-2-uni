@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 export default function CourseDetailPage({ params }) {
   const { id } = params;
 
