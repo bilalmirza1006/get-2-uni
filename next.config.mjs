@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    runtime: 'edge', // 👈 This makes all routes use the Edge runtime
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;
 

@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+// export const runtime = 'edge';
 import Image from 'next/image';
 import HeroSection from './(components)/home/sections/HeroSection';
 import ScrollingMarquee from './(components)/home/sections/ScrollingMarquee';

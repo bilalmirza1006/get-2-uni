@@ -1,5 +1,5 @@
 'use client';
-export const runtime = 'edge';
+
 import ProgramPage from '@/app/(components)/home/sections/ProgramDetailPage';
 import ApplyModal from '@/app/(components)/ui/ApplyModal';
 import Button from '@/app/(components)/ui/Button';
