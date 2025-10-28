@@ -1,5 +1,4 @@
 // 'use client';
-// export const runtime = 'edge';
 
 import ChooseUs from '@/app/(components)/about/sections/ChooseUs';
 import CountriesWeCover from '@/app/(components)/about/sections/CountriesWeCover';

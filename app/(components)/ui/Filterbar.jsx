@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useRef } from "react";
-import { Search, X, ChevronDown } from "lucide-react";
-import { createPortal } from "react-dom";
+import { useState, useRef } from 'react';
+import { Search, X, ChevronDown } from 'lucide-react';
+import { createPortal } from 'react-dom';
 
 /**
  * A reusable filter bar component
@@ -14,7 +14,7 @@ import { createPortal } from "react-dom";
  */
 export default function FilterBar({
   options = [],
-  placeholder = "Search...",
+  placeholder = 'Search...',
   onFilterChange,
   icon: IconComponent, // optional icon component (e.g., BrainCircuit)
 }) {
@@ -92,14 +92,14 @@ export default function FilterBar({
 
               const left =
                 spaceRight < dropdownWidth
-                  ? rect.right - dropdownWidth // align to button's right edge
+                  ? rect.right - dropdownWidth // align to button's right nodejs
                   : rect.left; // normal left alignment
 
               return createPortal(
                 <div
                   className="bg-white border border-gray-200 rounded-md shadow-md max-h-60 overflow-auto"
                   style={{
-                    position: "absolute",
+                    position: 'absolute',
                     top: rect.bottom + window.scrollY,
                     left: left,
                     width: dropdownWidth,
@@ -113,16 +113,12 @@ export default function FilterBar({
                         key={option.id}
                         onClick={() => toggleFilter(option)}
                         className={`flex justify-between items-center w-full px-3 py-2 text-sm hover:bg-gray-100 ${
-                          selected
-                            ? "text-[#C8102E] font-semibold"
-                            : "text-gray-700"
+                          selected ? 'text-[#C8102E] font-semibold' : 'text-gray-700'
                         }`}
                       >
                         {option.label}
                         {option.count && (
-                          <span className="text-xs text-gray-400">
-                            {option.count}
-                          </span>
+                          <span className="text-xs text-gray-400">{option.count}</span>
                         )}
                       </button>
                     );
