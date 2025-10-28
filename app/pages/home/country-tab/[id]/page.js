@@ -1,21 +1,18 @@
 'use client';
 
-// export const runtime = 'edge';
-
-// import React from 'react';
-import Image from 'next/image';
-import React from 'react';
+import ProgramsListLayout from '@/app/(components)/home/sections/CountriesLaout/ProgramsListLayout';
+import Button from '@/app/(components)/ui/Button';
+import BacklogsIcon from '@/public/home/BacklogsIcon';
 import CreditsIcon from '@/public/home/CreditsIcon';
 import GreIcon from '@/public/home/GreIcon';
 import PrivateIcon from '@/public/home/PrivateIcon';
-import WorldRankIcon from '@/public/home/WorldRankIcon';
-import BacklogsIcon from '@/public/home/BacklogsIcon';
 import RankStar from '@/public/home/RankStar';
-import Button from '@/app/(components)/ui/Button';
-import InstantFindPrograms from '@/app/(components)/home/sections/InstantFind/InstantFindPrograms';
+import WorldRankIcon from '@/public/home/WorldRankIcon';
+import Image from 'next/image';
+import React from 'react';
 
-const page = ({ params }) => {
-  const { id } = params;
+const page = async ({ params }) => {
+  const { id } = await params;
 
   const universities = [
     {
@@ -74,7 +71,6 @@ const page = ({ params }) => {
       },
     },
   ];
-
   return (
     <section className="max-w-[1560px] mx-auto mt-10">
       {universities.map((university) => (
@@ -119,20 +115,6 @@ const page = ({ params }) => {
               <p className="text-lg font-inter font-medium text-primaryheading ">
                 {university.locations}
               </p>
-
-              {/* <div className="flex flex-wrap gap-3 mb-4">
-                <span className="bg-gray-100 text-sm px-3 py-1 rounded-md">MSE</span>
-                <span className="bg-gray-100 text-sm px-3 py-1 rounded-md">
-                  {university.program}
-                </span>
-                <span className="bg-gray-100 text-sm px-3 py-1 rounded-md">
-                  {university.deadline}
-                </span>
-                <span className="bg-red-100 text-[#C7044C] text-sm px-3 py-1 rounded-md">
-                  {university.daysLeft}
-                </span>
-              </div> */}
-
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-lg">
                 <div className="space-y-2.5">
                   <p className="font-medium text-primaryheading">
@@ -232,7 +214,7 @@ const page = ({ params }) => {
       ))}
 
       <div>
-        <InstantFindPrograms />
+        <ProgramsListLayout />
       </div>
     </section>
   );

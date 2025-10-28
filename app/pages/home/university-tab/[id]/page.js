@@ -1,23 +1,18 @@
-'use client';
+// 'use client';
 
-export const runtime = 'edge';
-
-import ProgramPage from '@/app/(components)/home/sections/ProgramDetailPage';
-import ApplyModal from '@/app/(components)/ui/ApplyModal';
+import ProgramsList from '@/app/(components)/home/sections/UniversitiesLayout/ProgramsList';
 import Button from '@/app/(components)/ui/Button';
 import BacklogsIcon from '@/public/home/BacklogsIcon';
 import CreditsIcon from '@/public/home/CreditsIcon';
 import GreIcon from '@/public/home/GreIcon';
 import PrivateIcon from '@/public/home/PrivateIcon';
 import RankStar from '@/public/home/RankStar';
-import UsIcon from '@/public/home/UsIcon';
 import WorldRankIcon from '@/public/home/WorldRankIcon';
 import Image from 'next/image';
-import { useState } from 'react';
+import React from 'react';
 
-export default function UniversityDetailPage({ params }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { slug } = params;
+const page = async ({ params }) => {
+  const { id } = await params;
 
   const universities = [
     {
@@ -76,20 +71,6 @@ export default function UniversityDetailPage({ params }) {
       },
     },
   ];
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleFormSubmit = (formData) => {
-    console.log('User Info:', formData);
-    localStorage.setItem('enrollmentCompleted', 'true'); // Save flag
-    setIsModalOpen(false);
-  };
 
   return (
     <section className="max-w-[1560px] mx-auto mt-10">
@@ -246,16 +227,12 @@ export default function UniversityDetailPage({ params }) {
           </div>
         </div>
       ))}
-      <div className="bg-white drop-shadow-sm rounded-[10px] p-6 mb-5">
-        <ProgramPage isOpen={handleModalOpen} />
+
+      <div>
+        <ProgramsList />
       </div>
-      {isModalOpen && (
-        <ApplyModal
-          isOpen={handleModalOpen}
-          onClose={handleModalClose}
-          onSubmit={handleFormSubmit}
-        />
-      )}
     </section>
   );
-}
+};
+
+export default page;

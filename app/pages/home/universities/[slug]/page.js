@@ -1,20 +1,21 @@
 'use client';
 
-// export const runtime = 'edge';
-
-import ProgramsListLayout from '@/app/(components)/home/sections/CountriesLaout/ProgramsListLayout';
+import ProgramPage from '@/app/(components)/home/sections/ProgramDetailPage';
+import ApplyModal from '@/app/(components)/ui/ApplyModal';
 import Button from '@/app/(components)/ui/Button';
 import BacklogsIcon from '@/public/home/BacklogsIcon';
 import CreditsIcon from '@/public/home/CreditsIcon';
 import GreIcon from '@/public/home/GreIcon';
 import PrivateIcon from '@/public/home/PrivateIcon';
 import RankStar from '@/public/home/RankStar';
+import UsIcon from '@/public/home/UsIcon';
 import WorldRankIcon from '@/public/home/WorldRankIcon';
 import Image from 'next/image';
-import React from 'react';
+import { useState } from 'react';
 
-const page = async ({ params }) => {
-  const { id } = await params;
+export default function UniversityDetailPage({ params }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { slug } = params;
 
   const universities = [
     {
@@ -73,6 +74,21 @@ const page = async ({ params }) => {
       },
     },
   ];
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleFormSubmit = (formData) => {
+    console.log('User Info:', formData);
+    localStorage.setItem('enrollmentCompleted', 'true'); // Save flag
+    setIsModalOpen(false);
+  };
+
   return (
     <section className="max-w-[1560px] mx-auto mt-10">
       {universities.map((university) => (
@@ -117,6 +133,20 @@ const page = async ({ params }) => {
               <p className="text-lg font-inter font-medium text-primaryheading ">
                 {university.locations}
               </p>
+
+              {/* <div className="flex flex-wrap gap-3 mb-4">
+                <span className="bg-gray-100 text-sm px-3 py-1 rounded-md">MSE</span>
+                <span className="bg-gray-100 text-sm px-3 py-1 rounded-md">
+                  {university.program}
+                </span>
+                <span className="bg-gray-100 text-sm px-3 py-1 rounded-md">
+                  {university.deadline}
+                </span>
+                <span className="bg-red-100 text-[#C7044C] text-sm px-3 py-1 rounded-md">
+                  {university.daysLeft}
+                </span>
+              </div> */}
+
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-lg">
                 <div className="space-y-2.5">
                   <p className="font-medium text-primaryheading">
@@ -214,12 +244,16 @@ const page = async ({ params }) => {
           </div>
         </div>
       ))}
-
-      <div>
-        <ProgramsListLayout />
+      <div className="bg-white drop-shadow-sm rounded-[10px] p-6 mb-5">
+        <ProgramPage isOpen={handleModalOpen} />
       </div>
+      {isModalOpen && (
+        <ApplyModal
+          isOpen={handleModalOpen}
+          onClose={handleModalClose}
+          onSubmit={handleFormSubmit}
+        />
+      )}
     </section>
   );
-};
-
-export default page;
+}

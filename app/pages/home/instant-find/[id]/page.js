@@ -1,20 +1,19 @@
-// 'use client';
+'use client';
 
-export const runtime = 'edge';
-
-import ProgramsList from '@/app/(components)/home/sections/UniversitiesLayout/ProgramsList';
-import Button from '@/app/(components)/ui/Button';
-import BacklogsIcon from '@/public/home/BacklogsIcon';
+// import React from 'react';
+import Image from 'next/image';
+import React from 'react';
 import CreditsIcon from '@/public/home/CreditsIcon';
 import GreIcon from '@/public/home/GreIcon';
 import PrivateIcon from '@/public/home/PrivateIcon';
-import RankStar from '@/public/home/RankStar';
 import WorldRankIcon from '@/public/home/WorldRankIcon';
-import Image from 'next/image';
-import React from 'react';
+import BacklogsIcon from '@/public/home/BacklogsIcon';
+import RankStar from '@/public/home/RankStar';
+import Button from '@/app/(components)/ui/Button';
+import InstantFindPrograms from '@/app/(components)/home/sections/InstantFind/InstantFindPrograms';
 
-const page = async ({ params }) => {
-  const { id } = await params;
+const page = ({ params }) => {
+  const { id } = params;
 
   const universities = [
     {
@@ -231,7 +230,7 @@ const page = async ({ params }) => {
       ))}
 
       <div>
-        <ProgramsList />
+        <InstantFindPrograms />
       </div>
     </section>
   );
