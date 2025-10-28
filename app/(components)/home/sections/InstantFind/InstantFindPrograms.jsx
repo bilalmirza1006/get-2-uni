@@ -30,7 +30,7 @@ const relatedCourses = {
     ],
 };
 
-export default function ProgramsList() {
+export default function InstantFindPrograms() {
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');

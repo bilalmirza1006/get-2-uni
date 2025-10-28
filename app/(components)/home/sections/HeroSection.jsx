@@ -42,6 +42,8 @@ import { useState } from "react";
 import Dropdown from "../../ui/Dropdown";
 import Button from "../../ui/Button";
 import SearchBar from "../../ui/SearchInput";
+import BlurText from "../../animation/blurtext/BlurText";
+import AnimatedContent from "../../animation/animatedcontent/AnimatedContent";
 // import { FaSearch } from "react-icons/fa";
 
 export default function HeroSection() {
@@ -51,7 +53,9 @@ export default function HeroSection() {
         console.log("Search query:", query);
         // TODO: fetch results from API here
     };
-
+    const handleAnimationComplete = () => {
+        console.log('Animation completed!');
+    };
     return (
         <section
             className="flex justify-center items-center bg-white h-[520px] overflow-hidden "
@@ -62,50 +66,81 @@ export default function HeroSection() {
                 aria-hidden="true"
             ></div>
 
-            <div className="relative max-w-7xl mx-auto text-center">
+            <div className="relative max-w-7xl  mx-auto text-center">
                 {/* Heading */}
                 <h1 className="text-3xl md:text-[44px] font-semibold text-primaryheading">
-                    Find the Best University{" "}
-                    <span className="text-[#C8102E]">For You — Instantly</span>
+                    <BlurText
+                        text="Find the Best University"
+                        className="inline-block mr-3"
+                        animateBy="words"
+                        direction="top"
+                        delay={150}
+                    />
+                    <BlurText
+                        text="For You — Instantly"
+                        className="inline-block text-[#C8102E]"
+                        animateBy="words"
+                        direction="top"
+                        delay={150}
+                    />
                 </h1>
-                <p className="text-gray-600 mt-3">
-                    Find useful information, apply, get visa and even a job all in one place
-                </p>
 
                 {/* Search Bar */}
-                <div className="mt-10 w-full ">
-                    <SearchBar onSearch={handleSearch} />
-                </div>
+                <AnimatedContent
+                    // distance={150}
+                    // direction="horizontal"
+                    // reverse={false}
+                    // duration={1.2}
+                    // ease="bounce.out"
+                    // initialOpacity={0.2}
+                    // animateOpacity
+                    // scale={1.1}
+                    // threshold={0.2}
+                    // delay={0.3}
+                    distance={80}        // how far it travels before settling
+                    direction="vertical" // ensures it moves up/down
+                    reverse={false}       // true = from bottom → top
+                    duration={1}         // animation speed
+                    ease="power3.out"    // smooth easing
+                    threshold={0.2}      // when to trigger
+                    delay={0}
+                >
+                    <div className="mt-10 w-full ">
+                        <SearchBar onSearch={handleSearch} />
+                    </div>
 
-                {/* Filters Grid */}
-                <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-center">
-                    {/* <select className="border border-gray-200 py-2 px-3 rounded-md focus:ring-2 focus:ring-[#C8102E]">
+                    {/* Filters Grid */}
+
+                    <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-center">
+                        {/* <select className="border border-gray-200 py-2 px-3 rounded-md focus:ring-2 focus:ring-[#C8102E]">
                         <option>Rank</option>
                     </select> */}
-                    <div className="w-full ">
+                        <div className="w-full ">
 
-                        <Dropdown width={'w-full'} defaultValue="Rank" />
-                    </div>
-                    <div className="w-full ">
+                            <Dropdown width={'w-full'} defaultValue="Rank" />
+                        </div>
+                        <div className="w-full ">
 
-                        <Dropdown width={'w-full'} defaultValue="Acceptance" />
-                    </div>
-                    <div className="w-full ">
+                            <Dropdown width={'w-full'} defaultValue="Acceptance" />
+                        </div>
+                        <div className="w-full ">
 
-                        <Dropdown width={'w-full'} defaultValue="Deadline" />
-                    </div>
-                    <div className="w-full ">
+                            <Dropdown width={'w-full'} defaultValue="Deadline" />
+                        </div>
+                        <div className="w-full ">
 
-                        <Dropdown width={'w-full'} defaultValue="App fee" />
-                    </div>
-                    <div className="w-full ">
+                            <Dropdown width={'w-full'} defaultValue="App fee" />
+                        </div>
+                        <div className="w-full ">
 
-                        <Dropdown width={'w-full'} defaultValue="Tuition fee" />
+                            <Dropdown width={'w-full'} defaultValue="Tuition fee" />
+                        </div>
+                        <div className="w-full ">
+                            <Button text="Clear Filter" icon={<SlidersHorizontal className="text-white" />} color="text-white" bg="bg-[#ACACAC]" cn="!w-full !py-3.5" />
+                        </div>
                     </div>
-                    <div className="w-full ">
-                        <Button text="Clear Filter" icon={<SlidersHorizontal className="text-white" />} color="text-white" bg="bg-[#ACACAC]" cn="!w-full !py-3.5" />
-                    </div>
-                </div>
+                </AnimatedContent>
+
             </div>
         </section>
     );

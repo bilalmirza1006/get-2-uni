@@ -8,6 +8,7 @@ import CourseDetailPage from "./CourseDetailPage";
 import UniversitiesDetail from "./UniversitiesDetail";
 import UniversityGrid from "./UniversityGrid";
 import UniversitiesGridTab from "./UniversitiesLayout/UniversitiesGridTab";
+import CountriesGridTab from "./CountriesLaout/CountriesGridTab";
 
 export default function ExploreProgram() {
     const [selectedCourse, setSelectedCourse] = useState(null);
@@ -95,7 +96,7 @@ export default function ExploreProgram() {
                                 tabs={{
                                     Programs: <ProgramsGrid data={programs} onCourseClick={handleCourseClick} />,
                                     Universities: <UniversitiesGridTab data={programs} />,
-                                    Countries: <ProgramsGrid data={countries} onCourseClick={handleCourseClick} />,
+                                    Countries: <CountriesGridTab />,
                                 }}
                             />
                         )}

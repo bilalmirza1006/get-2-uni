@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { Bookmark, ChevronRight, CircleCheck } from 'lucide-react';
+import { Bookmark, ChevronRight, CircleCheck, Clock } from 'lucide-react';
 import Button from '@/app/(components)/ui/Button';
 import ProgramDetails from '@/app/(components)/ui/ProgramDetails';
 
@@ -30,7 +30,7 @@ const relatedCourses = {
     ],
 };
 
-export default function ProgramsList() {
+export default function ProgramsListLayout() {
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -64,7 +64,7 @@ export default function ProgramsList() {
     );
 
     return (
-        <div className="bg-white rounded-[10px] drop-shadow-sm p-6 mb-5">
+        <div className="bg-white rounded-[10px] drop-shadow-md p-6 mb-5">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
                 <span
@@ -193,7 +193,7 @@ export default function ProgramsList() {
                             <p className="text-xs text-Lighttext font-inter font-medium ">Duration: 1–4 Year</p>
                         </div>
                         <div className="flex gap-3 mt-3 md:mt-0">
-                            <Button text="Shortlist" cn={'!border-[#C7044C] !text-[#C7044C] hover:bg-pink-50'} icon={<Bookmark />} bg={'bg-white border'} />
+                            <Button text="Shortlist" icon={<Bookmark />} cn={'!border-[#C7044C] !text-[#C7044C] hover:bg-pink-50'} bg={'bg-white border'} />
                             <Button text="Apply Now" cn={' !text-white'} icon={<CircleCheck />} />
                         </div>
                     </div>

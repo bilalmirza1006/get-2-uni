@@ -1,11 +1,12 @@
 'use client';
-// export const runtime = 'edge';
+
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from './(components)/layout/Header';
 import { Footer } from './(components)/layout/Footer';
 import EnrollmentModal from './(components)/ui/EnrollmentModal';
 import React, { useEffect, useState } from 'react';
+import AnimatedContent from './(components)/animation/animatedcontent/AnimatedContent';
 // import { useEffect, useState } from 'react';
 // import Header from './(components)/layout/Header';
 // import Footer from './(components)/layout/Footer';
@@ -26,25 +27,24 @@ const geistMono = Geist_Mono({
 // };
 
 export default function RootLayout({ children }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    // Check if user already submitted the form before
-    const enrollmentDone = localStorage.getItem('enrollmentCompleted');
-    if (!enrollmentDone) {
-      setIsModalOpen(true);
-    }
-  }, []);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // useEffect(() => {
+  //   // Check if user already submitted the form before
+  //   const enrollmentDone = localStorage.getItem('enrollmentCompleted');
+  //   if (!enrollmentDone) {
+  //     setIsModalOpen(true);
+  //   }
+  // }, []);
 
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
 
-  const handleFormSubmit = (formData) => {
-    console.log('User Info:', formData);
-    localStorage.setItem('enrollmentCompleted', 'true'); // Save flag
-    setIsModalOpen(false);
-  };
+  // const handleFormSubmit = (formData) => {
+  //   console.log('User Info:', formData);
+  //   localStorage.setItem('enrollmentCompleted', 'true'); // Save flag
+  //   setIsModalOpen(false);
+  // };
   return (
     // <html lang="en">
     //   <body
@@ -55,20 +55,41 @@ export default function RootLayout({ children }) {
     // </html>
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-        <Header />
+        <AnimatedContent
+          // distance={150}
+          // direction="horizontal"
+          // reverse={false}
+          // duration={1.2}
+          // ease="bounce.out"
+          // initialOpacity={0.2}
+          // animateOpacity
+          // scale={1.1}
+          // threshold={0.2}
+          // delay={0.3}
+          distance={80}        // how far it travels before settling
+          direction="vertical" // ensures it moves up/down
+          reverse={false}       // true = from bottom → top
+          duration={1}         // animation speed
+          ease="power3.out"    // smooth easing
+          threshold={0.2}      // when to trigger
+          delay={0}
+        >
+
+          <Header />
+        </AnimatedContent>
 
         <main className="flex-1">{children}</main>
 
         <Footer />
 
         {/* Show modal only once */}
-        {isModalOpen && (
+        {/* {isModalOpen && (
           <EnrollmentModal
             isOpen={isModalOpen}
             onClose={handleModalClose}
             onSubmit={handleFormSubmit}
           />
-        )}
+        )} */}
       </body>
     </html>
   );

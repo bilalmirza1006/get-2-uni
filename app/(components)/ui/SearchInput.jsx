@@ -1,13 +1,23 @@
 "use client";
-import { useState } from "react";
-import { Search } from "lucide-react"; // icon
 
-export default function SearchBar({ placeholder = "Search university by name, program, country", onSearch }) {
+import { useState } from "react";
+import { Search } from "lucide-react";
+import { useRouter } from "next/navigation"; // ✅ import router
+
+export default function SearchBar({
+    placeholder = "Search university by name, program, country",
+}) {
     const [query, setQuery] = useState("");
+    const router = useRouter();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (onSearch) onSearch(query);
+
+        if (!query.trim()) return; // prevent empty searches
+
+        // Example: navigate to /home/country-tab/{query}
+        // You can replace query with an id if you have mapping logic
+        router.push(`/home/find-instant-universities/${encodeURIComponent(query)}`);
     };
 
     return (

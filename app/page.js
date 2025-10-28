@@ -1,10 +1,9 @@
-// export const runtime = 'edge';
 import Image from 'next/image';
 import HeroSection from './(components)/home/sections/HeroSection';
 import ScrollingMarquee from './(components)/home/sections/ScrollingMarquee';
 import ExploreProgram from './(components)/home/sections/ExploreProgram';
 import FaqSection from './(components)/home/sections/Faqs';
-import HomeSections from './pages/page';
+import HomeSections from './(pages)/page';
 
 export default function Home() {
   const programs = [
